@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="{{ url_for('auth.login_user') }}" method="post" id="login_form">
+		<input type="email" name="email" placeholder="Email" required="required" value="" />
+        <input type="password" name="password" placeholder="Password" required="required" value="" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Sign me up.</button>
+    </form>
+    <h4>Don't have an account?</h4>
+    <a href="{{ url_for('auth.register_user') }}">Register here</a>
+
+    <script>
+        const loginForm = document.getElementById('login_form')
+
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            let response = await fetch('{{ url_for('auth.login_user') }}', {
+              method: 'POST',
+              body: new FormData(loginForm)
+            });
+
+            console.log(response)
+
+            if (response.ok) {
+                let result = await response.json();
+                console.log(result)
+                const token = result.token.access;
+                localStorage.setItem('auth', token)
+                window.location.assign("/")
+            }
+        })
+    </script>
+</body>
+</html>

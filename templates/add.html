@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Item</title>
+</head>
+<body>
+    <form action="{{ url_for('add') }}" method="POST">
+      <label>Suitable season for the item</label>
+      <input name="season" type="text" />
+      <label>Type of the item</label>
+      <input name="type" type="text" />
+      <label>Colour</label>
+      <input name="colour" type="text" />
+      <button type="submit">Add Clothes</button>
+    </form>
+</body>
+</html>

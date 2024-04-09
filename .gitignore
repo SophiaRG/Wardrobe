@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+.env
+.venv/
+env/
+venv/
+__pycache__/
+blueprints/__pycache__
+utilities/__pycache__
