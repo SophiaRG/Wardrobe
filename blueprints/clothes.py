@@ -10,10 +10,10 @@ from dotenv import load_dotenv
 clothes_bp = Blueprint('clothes', __name__)
 
 mydb = mysql.connector.connect(
-    host=os.environ['DB_HOST'],
-    user=os.environ['DB_USER'],
-    password=os.environ['DB_PASSWORD'],
-    database=os.environ['DB_DATABASE'],
+    host=os.environ['MYSQL_DATABASE_HOST'],
+    user=os.environ['MYSQL_DATABASE_USERNAME'],
+    password=os.environ['MYSQL_DATABASE_PASSWORD'],
+    database=os.environ['MYSQL_DATABASE'],
 )
 
 mycursor = mydb.cursor()

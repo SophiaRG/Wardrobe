@@ -15,13 +15,15 @@ app = Flask(__name__)
 # mail = Mail(app)
 
 mydb = mysql.connector.connect(
-    host=os.environ['DB_HOST'],
-    user=os.environ['DB_USER'],
-    password=os.environ['DB_PASSWORD'],
-    database=os.environ['DB_DATABASE'],
+    host=os.environ['MYSQL_DATABASE_HOST'],
+    user=os.environ['MYSQL_DATABASE_USERNAME'],
+    password=os.environ['MYSQL_DATABASE_PASSWORD'],
+    database=os.environ['MYSQL_DATABASE'],
 )
 
 mycursor = mydb.cursor()
+
+# use_db = f"USE {os.environ(['DB_DATABASE'])};"
 
 mysql_request_clothes_table = "CREATE TABLE IF NOT EXISTS clothes (\
     id INT AUTO_INCREMENT PRIMARY KEY,\
@@ -40,6 +42,7 @@ mysql_request_users_table = "CREATE TABLE IF NOT EXISTS users (\
 );"
 
 
+# mycursor.execute(use_db)
 mycursor.execute(mysql_request_clothes_table)
 mycursor.execute(mysql_request_users_table)
 
@@ -144,4 +147,4 @@ def delete(user_id, id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5000)
