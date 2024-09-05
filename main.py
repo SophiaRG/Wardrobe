@@ -8,22 +8,22 @@ from blueprints.clothes import clothes_bp
 from utilities.token_required import token_required
 from dotenv import load_dotenv
 import os
+import sys
 
-load_dotenv()
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = Flask(__name__)
 # mail = Mail(app)
 
 mydb = mysql.connector.connect(
-    host=os.environ['MYSQL_DATABASE_HOST'],
-    user=os.environ['MYSQL_DATABASE_USERNAME'],
-    password=os.environ['MYSQL_DATABASE_PASSWORD'],
-    database=os.environ['MYSQL_DATABASE'],
+    host=os.environ.get('MYSQL_HOST'),
+    user=os.environ.get('MYSQL_USER'),
+    password=os.environ.get('MYSQL_PASSWORD'),
+    database=os.environ.get('MYSQL_DATABASE'),
+    port=os.environ.get('MYSQL_PORT'),
 )
 
 mycursor = mydb.cursor()
-
-# use_db = f"USE {os.environ(['DB_DATABASE'])};"
 
 mysql_request_clothes_table = "CREATE TABLE IF NOT EXISTS clothes (\
     id INT AUTO_INCREMENT PRIMARY KEY,\
@@ -42,7 +42,6 @@ mysql_request_users_table = "CREATE TABLE IF NOT EXISTS users (\
 );"
 
 
-# mycursor.execute(use_db)
 mycursor.execute(mysql_request_clothes_table)
 mycursor.execute(mysql_request_users_table)
 

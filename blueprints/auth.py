@@ -4,17 +4,19 @@ import mysql.connector
 from utilities.db_utilities import convert_db_data_in_list_dict, generate_confirmation_token, confirm_token
 import jwt
 import os
-from dotenv import load_dotenv
+import sys
 
-load_dotenv()
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 auth_bp = Blueprint('auth', __name__)
 
 mydb = mysql.connector.connect(
-    host=os.environ['MYSQL_DATABASE_HOST'],
-    user=os.environ['MYSQL_DATABASE_USERNAME'],
-    password=os.environ['MYSQL_DATABASE_PASSWORD'],
-    database=os.environ['MYSQL_DATABASE'],
+    host=os.environ.get('MYSQL_HOST'),
+    user=os.environ.get('MYSQL_USER'),
+    password=os.environ.get('MYSQL_PASSWORD'),
+    database=os.environ.get('MYSQL_DATABASE'),
+    port=os.environ.get('MYSQL_PORT'),
 )
+
 
 mycursor = mydb.cursor()
 

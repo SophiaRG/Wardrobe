@@ -5,20 +5,21 @@ from utilities.token_required import token_required
 from utilities.db_utilities import list_of_clothes_by_temp, select_from_other_to_final_dict
 import random
 import os
-from dotenv import load_dotenv
+import sys
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 clothes_bp = Blueprint('clothes', __name__)
 
 mydb = mysql.connector.connect(
-    host=os.environ['MYSQL_DATABASE_HOST'],
-    user=os.environ['MYSQL_DATABASE_USERNAME'],
-    password=os.environ['MYSQL_DATABASE_PASSWORD'],
-    database=os.environ['MYSQL_DATABASE'],
+    host=os.environ.get('MYSQL_HOST'),
+    user=os.environ.get('MYSQL_USER'),
+    password=os.environ.get('MYSQL_PASSWORD'),
+    database=os.environ.get('MYSQL_DATABASE'),
+    port=os.environ.get('MYSQL_PORT'),
 )
 
 mycursor = mydb.cursor()
-
-load_dotenv()
 
 clothes_classifications = {
     "top": ["T-shirt", "shirt", "sweater", "hoodie", "light sweater", "crop top", "polo", "top"],
