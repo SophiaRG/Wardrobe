@@ -1,50 +1,37 @@
 ## Wardrobe online
 
 In this app, clothes can be stored and divided into categories, and then chosen based on specific weather conditions. <br>
-App created with Python Flask Framework, MySQL databases, JWT, weather API. For this stage, HTTP requests could be checked in Postman app.
+App created with Python Flask Framework, MySQL databases, JWT, weather API, Docker. For this stage, HTTP requests could be checked in Postman app.
 
-### Get started with MySQL in the terminal:
+### Docker-compose:
 
-MySQL should be installed locally. <br>
-To get started with MySQL use this command:
-	`mysql -u root -p` 
-and after provide a password for the root. <br>
-
-Create a user in the root by typing the following command:
-	`CREATE USER 'username' IDENTIFIED BY 'password';`  <br>
-Privileges should be granted to this user in the root folder:
-	`GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;`<br>
-To check grants, enter the command: `show grants;` <br>
-Then exit MySQL command line by pressing Ctrl+D
-<br><br>
-Register to MySQL under created user:
-	`mysql -u username -p` after provide the password for the root.
+Run: `docker-compose up`
 
 ### .env file:
 
 Variables in .env file:<br>
 ```
-SECRET_KEY =  
-API_KEY (from URL = https://openweathermap.org/api) =  
+SECRET_KEY=""
+API_KEY(from URL = https://openweathermap.org/api)=""
 lat, lon (longtitude and latitude for city) =  
-API_CALL example= f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&&lon={lon}&appid={API_KEY}" 
-MYSQL_DATABASE_HOST = '' 
-MYSQL_DATABASE_USERNAME = '' 
-MYSQL_DATABASE_PASSWORD = ''
-MYSQL_DATABASE = ''
+API_CALL example=f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&&lon={lon}&appid={API_KEY}" 
+MYSQL_USER="" 
+MYSQL_PASSWORD=""
+MYSQL_DATABASE=""
+MYSQL_HOST=mysql
+MYSQL_PORT=3306
 ```
 
-### Python terminal:
+### mysql.env file:
 
-In Python terminal:
+Variables in mysql.env file:<br>
 ```
-	python3 -m venv .venv
-	source .venv/bin/activate
-	pip install -r requirements.txt
+MYSQL_ROOT_PASSWORD=""
+MYSQL_ROOT_HOST='%'
+MYSQL_USER=""
+MYSQL_PASSWORD=""
+MYSQL_DATABASE=""
 ```
-
-To run the program in terminal:
-	`python3 -u main.py`
 
 #### Function list:
 	
