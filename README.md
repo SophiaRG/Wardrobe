@@ -13,7 +13,7 @@ and after provide a password for the root. <br>
 Create a user in the root by typing the following command:
 	`CREATE USER 'username' IDENTIFIED BY 'password';`  <br>
 Privileges should be granted to this user in the root folder:
-	`GRANT ALL PRIVILEGES ON *.* TO 'username' (?) WITH GRANT OPTION (?);`<br>
+	`GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;`<br>
 To check grants, enter the command: `show grants;` <br>
 Then exit MySQL command line by pressing Ctrl+D
 <br><br>
