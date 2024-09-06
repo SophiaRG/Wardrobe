@@ -14,7 +14,7 @@ services:
     build: .
     command: sh -c "sleep 5s; flask run --host=0.0.0.0 --reload" 
     ports:
-      - 3000:3000
+      - 5000:5000
     depends_on:
       - mysql
     env_file:
