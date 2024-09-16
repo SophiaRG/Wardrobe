@@ -5,7 +5,6 @@ App created with Python Flask Framework, MySQL databases, JWT, weather API. For 
 
 ### Get started with MySQL in the terminal:
 
-MySQL should be installed locally. <br>
 To get started with MySQL use this command:
 	`mysql -u root -p` 
 and after provide a password for the root. <br>
@@ -15,10 +14,7 @@ Create a user in the root by typing the following command:
 Privileges should be granted to this user in the root folder:
 	`GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;`<br>
 To check grants, enter the command: `show grants;` <br>
-Then exit MySQL command line by pressing Ctrl+D
-<br><br>
-Register to MySQL under created user:
-	`mysql -u username -p` after provide the password for the root.
+Then exit MySQL command line by pressing Ctrl+D 
 
 ### .env file:
 
