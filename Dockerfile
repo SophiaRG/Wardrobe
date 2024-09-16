@@ -8,6 +8,8 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-EXPOSE 3000
+RUN python3 /app/privileges/privileges.py 
+
+EXPOSE 5000
 
 CMD ["python3", "/app/app.py"]

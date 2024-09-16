@@ -1,0 +1,3 @@
+CREATE USER 'sophia'@'%' IDENTIFIED BY 'qwerty54321';
+GRANT ALL PRIVILEGES ON *.* TO 'sophia'@'%';
+FLUSH PRIVILEGES;
